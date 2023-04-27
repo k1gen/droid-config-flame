@@ -1,6 +1,3 @@
-# These and other macros are documented in ../droid-configs-device/droid-configs.inc
-# Feel free to cleanup this file by removing comments, once you have memorised them ;)
-
 %define device flame
 %define vendor google
 
@@ -10,13 +7,18 @@
 # Community HW adaptations need this
 %define community_adaptation 1
 
-# Sailfish OS is considered to-scale, if in the App Grid you get 4-in-a-row icons,
-# and 2-in-a-row or 3-in-a-row app covers in the Home Screen, depending on
-# how many apps are open.
-# For 4-5.5" device screen sizes of 16:9 ratio, use this formula (hold portrait):
-# pixel_ratio = 4.5/DiagonalDisplaySizeInches * HorizontalDisplayResolution/540
-# Other screen sizes and ratios will require more trial-and-error.
-%define pixel_ratio 1.0
+%define android_version_major 11
+
+%define pixel_ratio 1.75
+%define icon_res 1.75
+
+# Device-specific ofono configuration
+Provides: ofono-configs
+Obsoletes: ofono-configs-mer
+
+# Device-specific bluez5 configuration
+Provides: bluez5-configs
+Obsoletes: bluez5-configs-mer
 
 %include droid-configs-device/droid-configs.inc
 %include patterns/patterns-sailfish-device-adaptation-flame.inc

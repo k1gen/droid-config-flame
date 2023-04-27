@@ -19,6 +19,13 @@ Requires: libhybris-libEGL
 Requires: libhybris-libGLESv2
 Requires: libhybris-libwayland-egl
 
+# Bluetooth
+Requires: bluebinder
+
+# Telephony
+Requires: ofono-binder-plugin
+Requires: dummy_netd
+
 # Sensors
 Requires: hybris-libsensorfw-qt5
 
@@ -29,13 +36,14 @@ Requires: libngf-qt5-qtfeedback
 # Needed for /dev/touchscreen symlink
 Requires: qt5-plugin-generic-evdev
 
-Requires: pulseaudio-modules-droid
+Requires: pulseaudio-modules-droid-jb2q
+Requires: pulseaudio-modules-droid-jb2q-common
 Requires: pulseaudio-modules-droid-hidl
 
 # The -dummy-af is needed for newer devices that run the main
 # audiosystem-passthrough in qti mode (e.g. >=Android 9 Qualcomm),
 # to fix non-responding Camera app and/or voice during a phone call:
-#Requires: audiosystem-passthrough-dummy-af
+Requires: audiosystem-passthrough-dummy-af
 
 # for audio recording to work:
 Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediacapture
@@ -75,8 +83,13 @@ Requires: geoclue-provider-hybris
 # 1. binder plugin requires Android 8 or a newer base
 # 2. pn54x plugin talks directly to pn54x driver
 # These plugins are mutually exclusive, you need to pick one:
-#Requires: nfcd-binder-plugin
+Requires: nfcd-binder-plugin
 #Requires: nfcd-pn54x-plugin
+
+# For suspend to work with enabled Wi-Fi on newer Qualcomm devices
+Requires: sailfish-connman-plugin-suspend
+
+Requires: parse-android-dynparts
 
 %description -n patterns-sailfish-device-adaptation-flame
 Pattern with packages for flame HW Adaptation

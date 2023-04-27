@@ -1,0 +1,5 @@
+on late-init
+    chown system input /sys/class/leds/vibrator/activate
+    chown system input /sys/class/leds/vibrator/duration
+    chmod 0664 /sys/class/leds/vibrator/activate
+    chmod 0664 /sys/class/leds/vibrator/duration

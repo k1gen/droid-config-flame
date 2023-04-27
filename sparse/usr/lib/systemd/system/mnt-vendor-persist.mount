@@ -1,0 +1,21 @@
+[Unit]
+Description=Droid mount for /mnt/vendor/persist
+Before=local-fs.target systemd-modules-load.service
+
+[Mount]
+#What=/dev/block/platform/soc/1d84000.ufshc/by-name/persist
+What=/dev/sda2
+Where=/mnt/vendor/persist
+Type=ext4
+Options=nosuid,nodev,noatime,barrier=1
+# Options had SELinux context option:  
+
+# Default is 90 which makes mount period too long in case of
+# errors so drop it down a notch.
+TimeoutSec=10
+
+[Install]
+WantedBy=local-fs.target
+
+# From ./out/target/product/flame/vendor/etc/fstab.persist :
+# /dev/block/platform/soc/1d84000.ufshc/by-name/persist /mnt/vendor/persist ext4    nosuid,nodev,noatime,barrier=1  wait
